@@ -29,6 +29,11 @@
                 <default>false</default>
                 <label>Bronze</label>
             </value>
+            <value>
+                <fullName>Shashank</fullName>
+                <default>false</default>
+                <label>Shashank</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
