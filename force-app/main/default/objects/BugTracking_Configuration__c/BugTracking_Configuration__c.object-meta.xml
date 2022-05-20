@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Has the queue details to which emails should be routed and configuration of x days after which bug tracking data will be cleaned from the system</description>
+    <enableFeeds>false</enableFeeds>
+    <label>BugTracking_Configuration</label>
+    <visibility>Public</visibility>
+</CustomObject>
