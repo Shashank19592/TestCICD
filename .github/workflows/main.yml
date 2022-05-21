@@ -28,4 +28,4 @@ jobs:
 
       - name: 'Running checks'
         run: |
-          sfdx force:source:deploy -x  package/package.xml --checkonly
+          sfdx force:source:deploy --checkonly
