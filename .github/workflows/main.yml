@@ -7,8 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,9 +21,20 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Install Salesforce CLI
+        run: |
+          npm install sfdx-cli -g
+          pip install xq
+          pip install yq
+      - name: Install sfdxGit delta
+        run: |
+          echo y | sfdx plugins:install sfdx-git-delta
+          sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output "."
+          cat package/package.xml
       - uses: sfdx-actions/setup-sfdx@v1
-        with: 
-             sfdx-auth-url: force://PlatformCLI::5Aep861TSESvWeug_xnvfcm1f6dzI3gfbxjWBZxbNBXjh0.L8qJJ6dA1vaQHwAJpBOOGIii76FmyruGbAH8yqYy@shashank-19592-dev-ed.my.salesforce.com
-      - name: sfdx-test-run
-        run: sfdx force:source:deploy -p force-app --checkonly --verbose  
+        with:
+          sfdx-auth-url: force://PlatformCLI::5Aep861TSESvWeug_xnvfcm1f6dzI3gfbxjWBZxbNBXjh0.L8qJJ6dA1vaQHwAJpBOOGIii76FmyruGbAH8yqYy@shashank-19592-dev-ed.my.salesforce.com
+
+      - name: 'Running checks'
+        run: |
+          sfdx force:source:deploy -x  package/package.xml --checkonly
