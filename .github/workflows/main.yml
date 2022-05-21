@@ -22,15 +22,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Install Salesforce CLI
-        run: |
-          npm install sfdx-cli -g
-          pip install xq
-          pip install yq
-      - name: Install sfdxGit delta
-        run: |
-          echo y | sfdx plugins:install sfdx-git-delta
-
       - uses: sfdx-actions/setup-sfdx@v1
         with:
           sfdx-auth-url: force://PlatformCLI::5Aep861TSESvWeug_xnvfcm1f6dzI3gfbxjWBZxbNBXjh0.L8qJJ6dA1vaQHwAJpBOOGIii76FmyruGbAH8yqYy@shashank-19592-dev-ed.my.salesforce.com
