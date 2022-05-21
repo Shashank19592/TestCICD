@@ -30,7 +30,7 @@ jobs:
       - name: Install sfdxGit delta
         run: |
           echo y | sfdx plugins:install sfdx-git-delta
-          sfdx sgd:source:delta --to HEAD --from HEAD^ --output .   
+          sfdx sgd:source:delta -f "HEAD^"  --output .    
           cat package/package.xml
       - uses: sfdx-actions/setup-sfdx@v1
         with:
