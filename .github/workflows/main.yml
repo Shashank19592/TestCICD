@@ -25,6 +25,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Install Salesforce CLI
+        run: wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+             mkdir sfdx-cli
+             tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+             ./sfdx-cli/install
+      
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
