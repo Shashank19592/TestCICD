@@ -28,4 +28,4 @@ jobs:
         with: 
              sfdx-auth-url: force://PlatformCLI::5Aep861TSESvWeug_xnvfcm1f6dzI3gfbxjWBZxbNBXjh0.L8qJJ6dA1vaQHwAJpBOOGIii76FmyruGbAH8yqYy@shashank-19592-dev-ed.my.salesforce.com
       - name: sfdx-test-run
-        run: sfdx force:apex:test:run -l RunLocalTests -w 30
+        run: sfdx force:source:deploy -p force-app --checkonly --verbose  
