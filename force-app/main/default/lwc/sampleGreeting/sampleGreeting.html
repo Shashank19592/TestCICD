@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Sample Greeting" icon-name="standard:contact">
+        <div class="slds-m-around_medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="nameInput">Enter Your Name</label>
+                <div class="slds-form-element__control">
+                    <lightning-input
+                        type="text"
+                        label="Your Name"
+                        placeholder="e.g. John Doe"
+                        value={name}
+                        onchange={handleNameChange}>
+                    </lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    label="Say Hello"
+                    variant="brand"
+                    onclick={handleGreet}>
+                </lightning-button>
+                <lightning-button
+                    label="Reset"
+                    variant="neutral"
+                    class="slds-m-left_small"
+                    onclick={handleReset}>
+                </lightning-button>
+            </div>
+
+            <template if:true={greeting}>
+                <div class="slds-m-top_medium slds-box slds-theme_shade slds-text-align_center">
+                    <p class="slds-text-heading_medium">{greeting}</p>
+                    <p class="slds-text-body_small slds-m-top_x-small">
+                        Current Time: {currentTime}
+                    </p>
+                </div>
+            </template>
+
+            <template if:true={showError}>
+                <div class="slds-m-top_medium">
+                    <p class="slds-text-color_error">Please enter your name before greeting.</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
